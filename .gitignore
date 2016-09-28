@@ -34,8 +34,7 @@
 
 # "temporary" build files
 /target
-.idea
-.idea/workspace.xml
+.idea/
 SwaggerSample-grailsPlugins.iml
 SwaggerSample.iml
 
