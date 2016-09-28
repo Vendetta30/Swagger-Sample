@@ -30,7 +30,12 @@
 # older plugin install locations
 /plugins
 /web-app/plugins
+/web-app/WEB-INF
 
 # "temporary" build files
 /target
+.idea
+.idea/workspace.xml
+SwaggerSample-grailsPlugins.iml
+SwaggerSample.iml
 

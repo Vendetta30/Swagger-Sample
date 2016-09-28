@@ -9,6 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -41,6 +42,12 @@
     <content url="file://$MODULE_DIR$/target/work/plugins/hibernate4-4.3.6.1">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/hibernate4-4.3.6.1/src/java" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/grails-app/controllers" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/grails-app/services" isTestSource="false" />
@@ -62,6 +69,7 @@
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (SwaggerSample-grailsPlugins)">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/lib" />
           <root url="jar:///opt/grails-2.4.4/lib/org.grails/grails-datastore-simple/jars/grails-datastore-simple-3.1.3.RELEASE.jar!/" />
           <root url="jar:///opt/grails-2.4.4/lib/org.grails/grails-datastore-gorm/jars/grails-datastore-gorm-3.1.3.RELEASE.jar!/" />
           <root url="jar:///opt/grails-2.4.4/lib/org.grails/grails-datastore-core/jars/grails-datastore-core-3.1.3.RELEASE.jar!/" />
@@ -194,9 +202,44 @@
           <root url="jar:///opt/grails-2.4.4/lib/net.java.dev.jna/jna/jars/jna-4.0.0.jar!/" />
           <root url="jar:///opt/grails-2.4.4/lib/org.apache.ant/ant-junit/jars/ant-junit-1.8.4.jar!/" />
           <root url="jar:///opt/grails-2.4.4/lib/org.apache.ant/ant-trax/jars/ant-trax-1.7.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/xml/bind/jaxb-impl/2.2.3-1/jaxb-impl-2.2.3-1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-json/1.18.1/jersey-json-1.18.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-server/1.18.1/jersey-server-1.18.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-servlet/1.18.1/jersey-servlet-1.18.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/jersey/jersey-core/1.18.1/jersey-core-1.18.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/restlet/gae/org.restlet.lib.org.json/2.0/org.restlet.lib.org.json-2.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/restlet/gae/org.restlet.ext.json/2.1.4/org.restlet.ext.json-2.1.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/restlet/gae/org.restlet.ext.servlet/2.1.4/org.restlet.ext.servlet-2.1.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/sun/jersey/contribs/jersey-spring/1.18.1/jersey-spring-1.18.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/restlet/gae/org.restlet/2.1.4/org.restlet-2.1.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/jaxrs/jackson-jaxrs-base/2.4.5/jackson-jaxrs-base-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/jaxrs/jackson-jaxrs-json-provider/2.4.5/jackson-jaxrs-json-provider-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/annotations/2.0.1/annotations-2.0.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/reflections/reflections/0.9.10/reflections-0.9.10.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/woodstox/stax2-api/3.1.4/stax2-api-3.1.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.4.5/jackson-module-jaxb-annotations-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.4.5/jackson-dataformat-xml-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-jaxrs/1.5.8/swagger-jaxrs-1.5.8.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-annotations/1.5.8/swagger-annotations-1.5.8.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-models/1.5.8/swagger-models-1.5.8.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/yaml/snakeyaml/1.12/snakeyaml-1.12.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.4.5/jackson-dataformat-yaml-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/joda-time/joda-time/2.2/joda-time-2.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.4.5/jackson-datatype-joda-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.4.5/jackson-core-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.4.5/jackson-databind-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.4.5/jackson-annotations-2.4.5.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.2.1/commons-lang3-3.2.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-core/1.5.8/swagger-core-1.5.8.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/javax/xml/bind/jaxb-api/2.2.2/jaxb-api-2.2.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/target/work/plugins/jaxrs-0.11/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>
