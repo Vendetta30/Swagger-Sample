@@ -8,8 +8,6 @@ class UrlMappings {
         }
 
         "/"(controller: 'apiDoc', action: 'index')
-        "/api/sample/securedWithClientOAuth"(controller: 'sample', action: 'securedWithClientOAuth')
-        "/api/sample/securedWithUserOAuth"(controller: 'sample', action: 'securedWithUserOAuth')
         "500"(view: '/error')
     }
 }

@@ -6,7 +6,6 @@ class ApiDocController {
     LinkGenerator grailsLinkGenerator
     def apiService
     def index = {
-        String basePath = grailsLinkGenerator.serverBaseURL
         render(view: '/index')
     }
 
