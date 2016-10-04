@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import io.swagger.annotations.ApiResponse
 import io.swagger.annotations.ApiResponses
+import io.swagger.jaxrs.PATCH
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.web.bind.annotation.RestController
 
@@ -87,5 +88,22 @@ class CityController extends RestfulController {
     @Override
     def save() {
         super.save()
+    }
+
+    @PATCH
+    @Path("/update/{id}")
+    @ApiOperation(value = "Update a city", response = City)
+    @ApiResponses([
+            @ApiResponse(code = 404, message = "Bad Id Provided"),
+            @ApiResponse(code = 404, message = 'Could not find City with that Id'),
+            @ApiResponse(code = 422, message = 'Bad Entity Received'),
+    ])
+    @ApiImplicitParams([
+            @ApiImplicitParam(name = 'body', paramType = 'body', required = true, dataType = 'com.nexthoughts.City')
+    ])
+    def Object update(
+            @ApiParam(value = "City Id to Update", required = true) @PathParam("id") Long id
+    ) {
+        super.update()
     }
 }
