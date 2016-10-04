@@ -59,7 +59,7 @@ class CityController extends RestfulController {
     @DELETE
     @Path("/delete/{id}")
     @ApiOperation(value = "Delete a city", httpMethod = "DELETE", response = City)
-    @ApiResponses(value = [@ApiResponse(code = 404, message = "Invalid Id Supplied"),
+    @ApiResponses(value = [@ApiResponse(code = 422, message = "Invalid Id Supplied"),
             @ApiResponse(code = 404, message = "City Not Found")])
     def delete(
             @ApiParam(value = "City Id to delete", required = true) @PathParam("id") Long id
@@ -96,7 +96,7 @@ class CityController extends RestfulController {
     @Path("/update/{id}")
     @ApiOperation(value = "Update a city", response = City)
     @ApiResponses([
-            @ApiResponse(code = 404, message = "Bad Id Provided"),
+            @ApiResponse(code = 400, message = "Bad Id Provided"),
             @ApiResponse(code = 404, message = 'Could not find City with that Id'),
             @ApiResponse(code = 422, message = 'Bad Entity Received'),
     ])
