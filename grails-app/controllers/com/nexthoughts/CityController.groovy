@@ -2,6 +2,8 @@ package com.nexthoughts
 
 import grails.rest.RestfulController
 import io.swagger.annotations.Api
+import io.swagger.annotations.ApiImplicitParam
+import io.swagger.annotations.ApiImplicitParams
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import io.swagger.annotations.ApiResponse
@@ -22,55 +24,25 @@ import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
 @Path("/city")
-@Api(value = "/city", description = "Access City Records")
+@Api(value = "city", description = "Access City Records")
 @Produces(["application/json", "application/xml"])
-class CityController {
+class CityController extends RestfulController {
     static responseFormats = ['json', 'xml']
+
+    CityController() {
+        super(City)
+    }
 
     @GET
     @Path("/")
-    @ApiOperation(value = "Get all your city details", httpMethod = "GET")
+    @ApiOperation(value = "Get all your city details", httpMethod = "GET", response = City)
     def index() {
         respond City.list(params)
     }
 
-    /*@POST
-    @Consumes([MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML])
-    @ApiOperation(value = "Save a city")
-    @ApiResponses(value = [@ApiResponse(code = 405, message = "Invalid Input")])
-    def save(@ApiParam(value = "City Name", required = true) City city) {
-        def cityInstance = city
-        if (!cityInstance.save(flush: true)) {
-            render(view: "create", model: [cityInstance: cityInstance])
-            return
-        }
-        flash.message = message(code: 'default.created.message', args: [message(code: 'city.label', default: 'City'), cityInstance.id])
-        redirect(action: "show", id: cityInstance.id)
-    }*/
-
-    /*@POST
-    @Path("/save")
-    @Consumes([MediaType.APPLICATION_FORM_URLENCODED])
-    @ApiOperation(value = "Save a city", consumes = MediaType.APPLICATION_FORM_URLENCODED)
-    @ApiResponses(value = [@ApiResponse(code = 405, message = "Invalid Input")])
-    def save(
-            @ApiParam(value = "City Name", required = true) @FormParam("cityName") String cityName,
-            @ApiParam(value = "Postal Code", required = true) @FormParam("postalCode") String postalCode,
-            @ApiParam(value = "Country Code", required = true) @FormParam("countryCode") String countryCode
-    ) {
-        def params = [cityName: cityName, postalCode: postalCode, countryCode: countryCode]
-        def cityInstance = new City(params)
-        if (!cityInstance.save(flush: true)) {
-            render(view: "create", model: [cityInstance: cityInstance])
-            return
-        }
-        flash.message = message(code: 'default.created.message', args: [message(code: 'city.label', default: 'City'), cityInstance.id])
-        redirect(action: "show", id: cityInstance.id)
-    }*/
-
     @GET
     @Path("/show/{id}")
-    @ApiOperation(value = "Select a City", httpMethod = "GET")
+    @ApiOperation(value = "Select a City", httpMethod = "GET", response = City)
     def show(@ApiParam(value = "ID of city that needs to be select", required = true) @PathParam("id") Long id) {
         def cityInstance = City.findById(id)
         if (!cityInstance) {
@@ -83,7 +55,7 @@ class CityController {
 
     @DELETE
     @Path("/delete/{id}")
-    @ApiOperation(value = "Delete a city", httpMethod = "DELETE")
+    @ApiOperation(value = "Delete a city", httpMethod = "DELETE", response = City)
     @ApiResponses(value = [@ApiResponse(code = 404, message = "Invalid Id Supplied"),
             @ApiResponse(code = 404, message = "City Not Found")])
     def delete(
@@ -107,26 +79,13 @@ class CityController {
         }
     }
 
-    /*@PUT
-    @Path("/update/{id}")
-    @ApiOperation(value = "Update a city", httpMethod = "PUT")
-    def update(@ApiParam(value = "ID of city that needs to be update", required = true) @PathParam("id") Long id) {
-        def cityInstance = City.get(id)
-        if (!cityInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'city.label', default: 'City'), id])
-            redirect(action: "index")
-            return
-        }
-
-        cityInstance.properties = params
-        if (!cityInstance.save(flush: true)) {
-            render(view: "edit", model: [cityInstance: cityInstance])
-            return
-        }
-
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'city.label', default: 'City'), cityInstance.id])
-        respond cityInstance
+    @POST
+    @Path("/save")
+    @ApiOperation(value = "Create a New City", response = City)
+    @ApiResponses(value = [@ApiResponse(code = 422, message = "Invalid Details")])
+    @ApiImplicitParams([@ApiImplicitParam(name = 'body', paramType = 'body', required = true, dataType = 'com.nexthoughts.City')])
+    @Override
+    def save() {
+        super.save()
     }
-
-    */
 }
