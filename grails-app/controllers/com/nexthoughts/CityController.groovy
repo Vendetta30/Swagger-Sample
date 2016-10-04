@@ -19,6 +19,7 @@ import javax.ws.rs.Path
 import javax.ws.rs.PathParam
 import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
+import javax.ws.rs.core.Response
 
 @Path("/city")
 @Api(value = "/city", description = "Access City Records")
@@ -80,6 +81,32 @@ class CityController {
         respond cityInstance
     }
 
+    @DELETE
+    @Path("/delete/{id}")
+    @ApiOperation(value = "Delete a city", httpMethod = "DELETE")
+    @ApiResponses(value = [@ApiResponse(code = 404, message = "Invalid Id Supplied"),
+            @ApiResponse(code = 404, message = "City Not Found")])
+    def delete(
+            @ApiParam(value = "City Id to delete", required = true) @PathParam("id") Long id
+    ) {
+        def cityInstance = City.get(id)
+        if (!cityInstance) {
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'city.label', default: 'City'), id])
+            respond([message: "Not Found"])
+            return
+        }
+
+        try {
+            cityInstance.delete(flush: true)
+            flash.message = message(code: 'default.deleted.message', args: [message(code: 'city.label', default: 'City'), id])
+            respond([message: "City ${id} has been succesfully deleted"])
+        }
+        catch (DataIntegrityViolationException e) {
+            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'city.label', default: 'City'), id])
+            respond([message: "Internal Server Error"])
+        }
+    }
+
     /*@PUT
     @Path("/update/{id}")
     @ApiOperation(value = "Update a city", httpMethod = "PUT")
@@ -101,26 +128,5 @@ class CityController {
         respond cityInstance
     }
 
-    @DELETE
-    @Path("/delete")
-    @ApiOperation(value = "Delete a city", httpMethod = "DELETE")
-    def delete() {
-        Long id = params.id as Long
-        def cityInstance = City.get(id)
-        if (!cityInstance) {
-            flash.message = message(code: 'default.not.found.message', args: [message(code: 'city.label', default: 'City'), id])
-            redirect(action: "list")
-            return
-        }
-
-        try {
-            cityInstance.delete(flush: true)
-            flash.message = message(code: 'default.deleted.message', args: [message(code: 'city.label', default: 'City'), id])
-            redirect(action: "list")
-        }
-        catch (DataIntegrityViolationException e) {
-            flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'city.label', default: 'City'), id])
-            redirect(action: "show", id: id)
-        }
-    }*/
+    */
 }
