@@ -24,6 +24,8 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
+//            @ApiImplicitParam(name = 'q', value = 'Query', paramType = 'query', dataType = 'string')
+
 @Path("/city")
 @Api(value = "city", description = "Access City Records")
 @Produces(["application/json", "application/xml"])
@@ -105,5 +107,18 @@ class CityController extends RestfulController {
             @ApiParam(value = "City Id to Update", required = true) @PathParam("id") Long id
     ) {
         super.update()
+    }
+
+    @GET
+    @Path("/list")
+    @ApiOperation(value = 'List demos', response = City, responseContainer = 'list')
+    @ApiImplicitParams([
+            @ApiImplicitParam(name = 'offset', value = 'Records to skip', defaultValue = '0', paramType = 'query', dataType = 'int'),
+            @ApiImplicitParam(name = 'max', value = 'Max records to return', defaultValue = '10', paramType = 'query', dataType = 'int'),
+            @ApiImplicitParam(name = 'sort', value = 'Field to sort by', defaultValue = 'id', paramType = 'query', dataType = 'string'),
+            @ApiImplicitParam(name = 'order', value = 'Order to sort by', defaultValue = 'asc', paramType = 'query', dataType = 'string'),
+    ])
+    def list() {
+        super.index()
     }
 }
